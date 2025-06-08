@@ -7,7 +7,7 @@ import Button from '../components/common/button';
 const EditRecipe = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  
+
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -48,16 +48,16 @@ const EditRecipe = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-  !formData.title.trim() ||
-  !formData.description.trim() ||
-  !formData.ingredients.trim() ||
-  !formData.steps.trim()
-) {
-  setMessage('❌ Semua field wajib diisi!');
-  return;
-}
 
+    if (
+      !formData.title.trim() ||
+      !formData.description.trim() ||
+      !formData.ingredients.trim() ||
+      !formData.steps.trim()
+    ) {
+      setMessage('❌ Semua field wajib diisi!');
+      return;
+    }
 
     const data = new FormData();
     data.append('title', formData.title);
@@ -73,9 +73,9 @@ const EditRecipe = () => {
     }
 
     try {
-     await axios.put(`/recipes/${id}`, data, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-});
+      await axios.put(`/recipes/${id}`, data, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
 
       setMessage('✅ Resep berhasil diupdate!');
       setTimeout(() => navigate('/recipes'), 1000);
@@ -86,8 +86,11 @@ const EditRecipe = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl mx-auto p-6 bg-white rounded-xl shadow space-y-4">
-      <h2 className="text-2xl font-bold text-center">Edit Resep</h2>
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-xl mx-auto px-4 sm:px-6 py-6 bg-white rounded-xl shadow space-y-4"
+    >
+      <h2 className="text-xl sm:text-2xl font-bold text-center">Edit Resep</h2>
 
       <Input
         name="title"
@@ -152,14 +155,24 @@ const EditRecipe = () => {
           <img
             src={preview || `http://localhost:5000${formData.image_url}`}
             alt="Preview"
-            className="mx-auto h-48 object-cover rounded border"
+            className="mx-auto h-40 sm:h-48 w-full object-cover rounded border"
           />
         </div>
       )}
 
-      {message && <p className="text-center text-sm">{message}</p>}
+      {message && (
+        <p
+          className={`text-center text-sm font-medium ${
+            message.includes('✅') ? 'text-green-600' : 'text-red-600'
+          }`}
+        >
+          {message}
+        </p>
+      )}
 
       <Button type="submit">Update Resep</Button>
+
+      <div className="h-10 sm:hidden" /> {/* ruang bawah ekstra di HP */}
     </form>
   );
 };
