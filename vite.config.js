@@ -9,8 +9,4 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: '/', // <--- Tambahkan ini agar routing jalan di Vercel
-  build: {
-    outDir: 'dist' // <--- Pastikan output-nya benar
-  }
 });
