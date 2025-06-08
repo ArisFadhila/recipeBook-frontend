@@ -59,7 +59,7 @@ const RecipeForm = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/recipes', data, {
+      await axios.post('https://recipebook-backend-production.up.railway.app/api/recipes', data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 

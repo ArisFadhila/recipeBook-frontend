@@ -8,7 +8,7 @@ const RecipeCard = ({ recipe, onDelete, isFavoriteView = false, onUnfavorited })
   const [isFav, setIsFav] = useState(isFavoriteView);
 
   const imageSrc = recipe.image_url
-    ? `http://localhost:5000${recipe.image_url}`
+    ? `https://recipebook-backend-production.up.railway.app${recipe.image_url}`
     : '/placeholder.png';
 
   const handleDelete = async () => {

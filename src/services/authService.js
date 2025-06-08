@@ -1,6 +1,6 @@
 import axios from './axiosInstance';
 
-const API_URL = 'http://localhost:5000/api/auth';
+const API_URL = 'https://recipebook-backend-production.up.railway.app/api/auth';
 
 export const register = (data) => axios.post(`${API_URL}/register`, data);
 

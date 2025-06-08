@@ -11,7 +11,7 @@ const RecipeDetail = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/recipes/${id}`);
+        const res = await axios.get(`https://recipebook-backend-production.up.railway.app/api/recipes/${id}`);
         console.log('Data resep dari API:', res.data); 
         setRecipe(res.data);
       } catch (err) {

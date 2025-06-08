@@ -1,6 +1,7 @@
 import axios from './axiosInstance';
 
-const API_URL = 'http://localhost:5000/api/recipes';
+const API_URL = 'https://recipebook-backend-production.up.railway.app/api/recipes';
+;
 
 export const getRecipes = async (params = {}) => {
   const res = await axios.get(API_URL, { params });

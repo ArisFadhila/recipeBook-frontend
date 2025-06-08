@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'https://recipebook-backend-production.up.railway.app/api',
 });
 export const getFavorites = () => {
   return axiosInstance.get('/favorites');
